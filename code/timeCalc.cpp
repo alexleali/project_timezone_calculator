@@ -13,12 +13,15 @@ int main(){
 
     std::time_t end_time = std::chrono::system_clock::to_time_t(endAgga);
 
+    //getting input from user
     std::cout << "Enter the first time zone, leave blank for your system's time zone: ";
-    std::cin >> userFirstTimeZone;
+    std::getline(std::cin, userFirstTimeZone);
     std::cout << "\n";
     std::cout << "Enter the second time zone: ";
-    std::cin >> userSecondTimeZone;
+    std::getline(std::cin, userSecondTimeZone);
     std::cout << "\n";
+    //std::cout << date::
+
     std::cout << "current time is " << std::ctime(&end_time) << "\n";
 
     return 0;
