@@ -3,6 +3,11 @@
 #include <iostream>
 #include <string>
 
+stuct {
+    int hoursOffset;
+    string zoneName;
+} timezone;
+
 int main(){
 
     //time zones
