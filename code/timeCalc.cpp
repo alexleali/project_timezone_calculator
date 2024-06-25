@@ -3,10 +3,10 @@
 #include <iostream>
 #include <string>
 
-stuct {
+struct timeZone{
     int hoursOffset;
-    string zoneName;
-} timezone;
+    std::string zoneName;
+};
 
 int main(){
 
@@ -38,7 +38,7 @@ int main(){
     //std::time_t end_time = std::chrono::system_clock::to_time_t(secondTimeZone);
 
     //getting input from user
-    std::cout << "Enter the first time zone";
+    std::cout << "Enter the first time zone:";
     std::getline(std::cin, userFirstTimeZone);
     std::cout << "\n";
     std::cout << "Enter the second time zone: ";
