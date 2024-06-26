@@ -2,6 +2,8 @@
 #include <ctime>
 #include <iostream>
 #include <string>
+#include <cstring>
+#include <algorithm>
 
 struct timeZone {
     std::string zoneName;
@@ -33,22 +35,32 @@ int main(){
     std::string userFirstTimeZone = "";
     std::string userSecondTimeZone = "";
     //time_zone firstTimeZone;
-    std::chrono::time_point firstTimeZone = std::chrono::system_clock::now();
-    std::chrono::time_point secondTimeZone= std::chrono::system_clock::now();
+    timeZone firstTimeZone;
+    timeZone secondTimeZone;
 
     //std::time_t end_time = std::chrono::system_clock::to_time_t(secondTimeZone);
 
     //getting input from user
-    std::cout << "Enter the first time zone:";
+    std::cout << "Enter the first time zone, e.x. EDT:";
     std::getline(std::cin, userFirstTimeZone);
     std::cout << "\n";
     std::cout << "Enter the second time zone: ";
     std::getline(std::cin, userSecondTimeZone);
     std::cout << "\n";
 
-    if(userFirstTimeZone == ""){
-        firstTimeZone = std::chrono::system_clock::now();
-    }
+    std::transform(userFirstTimeZone.begin(), userFirstTimeZone.end(), userFirstTimeZone.begin(), ::toupper);
+    std::transform(userSecondTimeZone.begin(), userSecondTimeZone.end(), userSecondTimeZone.begin(), ::toupper);
+
+    //userSecondTimeZone = std::cstring::toupper(userSecondTimeZone);
+
+
+    /*for(int x = 0; x < 14; x++){
+        if(userFirstTimeZone == timeZones[x].zoneName){
+
+        }
+    }*/
+
+
 
     //std::cout << date::
 
