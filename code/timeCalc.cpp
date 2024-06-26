@@ -66,6 +66,13 @@ int main(){
     bool firstZoneIsNegative = firstTimeZone.hoursOffset < 0;
     bool secondZoneIsNegative = secondTimeZone.hoursOffset < 0;
 
+    if(firstZoneIsNegative){
+
+    }
+    else if (secondZoneIsNegative){
+
+    }
+
     //std::cout << date::
 
     //std::cout << "current time is " << std::ctime(&end_time) << "\n";
