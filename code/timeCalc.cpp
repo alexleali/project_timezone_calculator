@@ -54,11 +54,15 @@ int main(){
     //userSecondTimeZone = std::cstring::toupper(userSecondTimeZone);
 
 
-    /*for(int x = 0; x < 14; x++){
+    for(int x = 0; x < 14; x++){
         if(userFirstTimeZone == timeZones[x].zoneName){
-
+            firstTimeZone = timeZones[x];
         }
-    }*/
+        if(userSecondTimeZone == timeZones[x].zoneName){
+            secondTimeZone = timeZones[x];
+        }
+    }
+
 
 
 
