@@ -63,8 +63,8 @@ int main(){
         }
     }
 
-
-
+    bool firstZoneIsNegative = firstTimeZone.hoursOffset < 0;
+    bool secondZoneIsNegative = secondTimeZone.hoursOffset < 0;
 
     //std::cout << date::
 
