@@ -37,6 +37,7 @@ int main(){
     //time_zone firstTimeZone;
     timeZone firstTimeZone;
     timeZone secondTimeZone;
+    int calculatedOffset;
     //auto end = std::chrono::system_clock::now();
 
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
@@ -74,7 +75,7 @@ int main(){
 
     }
     else if (secondZoneIsNegative){
-
+        calculatedOffset = firstTimeZone.hoursOffset + (-secondTimeZone.hoursOffset);
     }
 
     //std::cout << date::
