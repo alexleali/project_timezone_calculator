@@ -37,8 +37,9 @@ int main(){
     //time_zone firstTimeZone;
     timeZone firstTimeZone;
     timeZone secondTimeZone;
+    //auto end = std::chrono::system_clock::now();
 
-    //std::time_t end_time = std::chrono::system_clock::to_time_t(secondTimeZone);
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
     //getting input from user
     std::cout << "Enter the first time zone, e.x. EDT:";
@@ -50,6 +51,7 @@ int main(){
 
     std::transform(userFirstTimeZone.begin(), userFirstTimeZone.end(), userFirstTimeZone.begin(), ::toupper);
     std::transform(userSecondTimeZone.begin(), userSecondTimeZone.end(), userSecondTimeZone.begin(), ::toupper);
+    //std::cout << std::ctime(&end_time) << "\n";
 
     //userSecondTimeZone = std::cstring::toupper(userSecondTimeZone);
 
@@ -67,6 +69,8 @@ int main(){
     bool secondZoneIsNegative = secondTimeZone.hoursOffset < 0;
 
     if(firstZoneIsNegative){
+        calculatedOffset = secondTimeZone.hoursOffset + (-firstTimeZone.hoursOffset);
+
 
     }
     else if (secondZoneIsNegative){
