@@ -77,7 +77,13 @@ int main(){
         calculatedOffset = firstTimeZone.hoursOffset + (-secondTimeZone.hoursOffset);
     }
 
+    int oldHours = timeToBeCalculated.tm_hour;
     int newHours = calculatedOffset + timeToBeCalculated.tm_hour;
+
+    if(newHours => 24){
+        newHours = newHours % 23
+    }
+
 
     //std::cout << newHours << "\n";
 
