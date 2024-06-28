@@ -38,7 +38,7 @@ int main(){
     timeZone firstTimeZone;
     timeZone secondTimeZone;
     int calculatedOffset;
-    //auto end = std::chrono::system_clock::now();
+    auto end = std::chrono::system_clock::now();
 
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
@@ -53,9 +53,8 @@ int main(){
     std::transform(userFirstTimeZone.begin(), userFirstTimeZone.end(), userFirstTimeZone.begin(), ::toupper);
     std::transform(userSecondTimeZone.begin(), userSecondTimeZone.end(), userSecondTimeZone.begin(), ::toupper);
     //std::cout << std::ctime(&end_time) << "\n";
-
-    //userSecondTimeZone = std::cstring::toupper(userSecondTimeZone);
-
+    std::tm timeToBeCalculated = *std::localtime(std::addressof(end_time));
+    std::cout << timeToBeCalculated.tm_hour << "\n";
 
     for(int x = 0; x < 14; x++){
         if(userFirstTimeZone == timeZones[x].zoneName){
@@ -78,7 +77,9 @@ int main(){
         calculatedOffset = firstTimeZone.hoursOffset + (-secondTimeZone.hoursOffset);
     }
 
-    //std::cout << date::
+    int newHours = calculatedOffset + timeToBeCalculated.tm_hour;
+
+    //std::cout << newHours << "\n";
 
     //std::cout << "current time is " << std::ctime(&end_time) << "\n";
 
