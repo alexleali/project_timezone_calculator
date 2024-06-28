@@ -5,6 +5,8 @@
 #include <cstring>
 #include <algorithm>
 
+
+//time zone structure
 struct timeZone {
     std::string zoneName;
     int hoursOffset;
@@ -32,6 +34,7 @@ int main(){
         {"NZST",12},
     };
 
+    //"global" variables
     std::string userFirstTimeZone = "";
     std::string userSecondTimeZone = "";
     //time_zone firstTimeZone;
@@ -60,12 +63,14 @@ int main(){
     std::getline(std::cin, userSecondTimeZone);
     std::cout << "\n";
 
+    //get local time from user
     std::transform(userFirstTimeZone.begin(), userFirstTimeZone.end(), userFirstTimeZone.begin(), ::toupper);
     std::transform(userSecondTimeZone.begin(), userSecondTimeZone.end(), userSecondTimeZone.begin(), ::toupper);
-    //std::cout << std::ctime(&end_time) << "\n";
     std::tm timeToBeCalculated = *std::localtime(std::addressof(end_time));
-    //std::cout << timeToBeCalculated.tm_hour << "\n";
 
+
+    //finding time zones specified
+    //probably should move this up to user input and ask user for input again if not found in array
     for(int x = 0; x < 14; x++){
         if(userFirstTimeZone == timeZones[x].zoneName){
             firstTimeZone = timeZones[x];
@@ -75,9 +80,12 @@ int main(){
         }
     }
 
+    //figure out which time zone is smaller (is that even the right way to word it?)
     bool firstZoneIsNegative = firstTimeZone.hoursOffset < 0;
     bool secondZoneIsNegative = secondTimeZone.hoursOffset < 0;
 
+    //calcuating the hours offset
+    //gonna need to do some more work because all it does is get from user's computer, not actually hours from the specified time zones
     if(firstZoneIsNegative){
         calculatedOffset = secondTimeZone.hoursOffset + (-firstTimeZone.hoursOffset);
 
@@ -87,6 +95,7 @@ int main(){
         calculatedOffset = firstTimeZone.hoursOffset + (-secondTimeZone.hoursOffset);
     }
 
+    //probably don't even need oldHours here?
     int oldHours = timeToBeCalculated.tm_hour;
     int newHours = calculatedOffset + timeToBeCalculated.tm_hour;
 
@@ -102,13 +111,9 @@ int main(){
     else{
         if(newHours >= 24){
         newHours = newHours % 23;
+        //print 24 hours
         }
     }
-
-
-
-
-    //std::cout << newHours << "\n";
 
     //std::cout << "current time is " << std::ctime(&end_time) << "\n";
 
