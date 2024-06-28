@@ -38,11 +38,17 @@ int main(){
     timeZone firstTimeZone;
     timeZone secondTimeZone;
     int calculatedOffset;
+    bool use12Hour;
     auto end = std::chrono::system_clock::now();
 
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
     //getting input from user
+    std::string userTimePref = ""
+    std::cout << "12 hour or 24 hour?: "
+    std::getline(std::cin, userTimePref);
+    std::cout << "\n";
+
     std::cout << "Enter the first time zone, e.x. EDT:";
     std::getline(std::cin, userFirstTimeZone);
     std::cout << "\n";
@@ -83,6 +89,7 @@ int main(){
     if(newHours => 24){
         newHours = newHours % 23
     }
+
 
 
     //std::cout << newHours << "\n";
