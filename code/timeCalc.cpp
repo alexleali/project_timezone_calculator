@@ -38,16 +38,20 @@ int main(){
     timeZone firstTimeZone;
     timeZone secondTimeZone;
     int calculatedOffset;
-    bool use12Hour;
+    bool use12Hour = false;
     auto end = std::chrono::system_clock::now();
 
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
     //getting input from user
-    std::string userTimePref = ""
-    std::cout << "12 hour or 24 hour?: "
+    std::string userTimePref = "";
+    std::cout << "12 hour or 24 hour?: ";
     std::getline(std::cin, userTimePref);
     std::cout << "\n";
+
+    if(userTimePref == "12" || userTimePref == "12 hour"){
+        use12Hour = true;
+    }
 
     std::cout << "Enter the first time zone, e.x. EDT:";
     std::getline(std::cin, userFirstTimeZone);
@@ -60,7 +64,7 @@ int main(){
     std::transform(userSecondTimeZone.begin(), userSecondTimeZone.end(), userSecondTimeZone.begin(), ::toupper);
     //std::cout << std::ctime(&end_time) << "\n";
     std::tm timeToBeCalculated = *std::localtime(std::addressof(end_time));
-    std::cout << timeToBeCalculated.tm_hour << "\n";
+    //std::cout << timeToBeCalculated.tm_hour << "\n";
 
     for(int x = 0; x < 14; x++){
         if(userFirstTimeZone == timeZones[x].zoneName){
@@ -86,9 +90,21 @@ int main(){
     int oldHours = timeToBeCalculated.tm_hour;
     int newHours = calculatedOffset + timeToBeCalculated.tm_hour;
 
-    if(newHours => 24){
-        newHours = newHours % 23
+    //printing is gonna happen here too
+    if(use12Hour){
+        if (newHours >= 13){
+            newHours = newHours % 12;
+            //print pm hours
+
+        }
+
     }
+    else{
+        if(newHours >= 24){
+        newHours = newHours % 23;
+        }
+    }
+
 
 
 
