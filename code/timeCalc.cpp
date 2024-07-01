@@ -123,6 +123,9 @@ int main(){
         newHours = newHours % 23;
         utcOffset = utcOffset % 23;
         //print 24 hours
+        std::cout << "In the " << secondTimeZone.zoneName << "time zone, it's " << utcOffset << ":" << gmtm->tm_min << "\n";
+
+
         }
     }
 
