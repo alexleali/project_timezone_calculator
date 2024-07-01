@@ -4,6 +4,7 @@
 #include <string>
 #include <cstring>
 #include <algorithm>
+#include <cmath>
 
 
 //time zone structure
@@ -40,7 +41,7 @@ int main(){
     //time_zone firstTimeZone;
     timeZone firstTimeZone;
     timeZone secondTimeZone;
-    int calculatedOffset;
+    int calculatedOffset, utcOffset;
     bool use12Hour = false;
     auto end = std::chrono::system_clock::now();
 
@@ -86,8 +87,10 @@ int main(){
 
     //calcuating the hours offset
     //gonna need to do some more work because all it does is get from user's computer, not actually hours from the specified time zones
+    //this doesn't do much, too bad!
     if(firstZoneIsNegative){
         calculatedOffset = secondTimeZone.hoursOffset + (-firstTimeZone.hoursOffset);
+
 
 
     }
@@ -95,10 +98,15 @@ int main(){
         calculatedOffset = firstTimeZone.hoursOffset + (-secondTimeZone.hoursOffset);
     }
 
+
     //probably don't even need oldHours here?
     tm* gmtm = gmtime(&end_time);
-    int oldHours = timeToBeCalculated.tm_hour;
+    int firstTimeZoneHours = timeToBeCalculated.tm_hour;
     int newHours = calculatedOffset + timeToBeCalculated.tm_hour;
+
+    //actual offset calculated here
+    utcOffset = gmtm->tm_hour + secondTimeZone.hoursOffset;
+
 
     //printing is gonna happen here too
     if(use12Hour){
