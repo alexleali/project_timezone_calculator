@@ -112,6 +112,7 @@ int main(){
     if(use12Hour){
         if (newHours >= 13){
             newHours = newHours % 12;
+            utcOffset = utcOffset % 12;
             //print pm hours
 
         }
@@ -120,6 +121,7 @@ int main(){
     else{
         if(newHours >= 24){
         newHours = newHours % 23;
+        utcOffset = utcOffset % 23;
         //print 24 hours
         }
     }
