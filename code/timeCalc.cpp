@@ -96,6 +96,7 @@ int main(){
     }
 
     //probably don't even need oldHours here?
+    tm* gmtm = gmtime(&end_time);
     int oldHours = timeToBeCalculated.tm_hour;
     int newHours = calculatedOffset + timeToBeCalculated.tm_hour;
 
