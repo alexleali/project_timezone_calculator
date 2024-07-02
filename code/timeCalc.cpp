@@ -131,6 +131,7 @@ int main(){
         utcOffset = utcOffset % 23;
         }
         //print 24 hours
+        std::cout << "in the " << firstTimeZone.zoneName << " zone it's " << abs((gmtm->tm_hour + firstTimeZone.hoursOffset)%23) << "\n";
         std::cout << "In the " << secondTimeZone.zoneName << " time zone, it's " << utcOffset << ":" << gmtm->tm_min << "\n";
     }
 
