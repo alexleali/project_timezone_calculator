@@ -109,8 +109,9 @@ int main(){
 
 
     //printing is gonna happen here too
+    std::cout << "Right now, it is";
     if(use12Hour){
-        std::cout << "in the " << secondTimeZone.zoneName << " time zone, it's ";
+        std::cout << "In the " << secondTimeZone.zoneName << " time zone, it's ";
         if (newHours >= 13){
             newHours = newHours % 12;
             utcOffset = utcOffset % 12;
@@ -131,7 +132,7 @@ int main(){
         utcOffset = utcOffset % 23;
         }
         //print 24 hours
-        std::cout << "in the " << firstTimeZone.zoneName << " zone it's " << abs((gmtm->tm_hour + firstTimeZone.hoursOffset)%23) << ":" << gmtm->tm_min << "\n";
+        std::cout << "In the " << firstTimeZone.zoneName << " zone it's " << abs((gmtm->tm_hour + firstTimeZone.hoursOffset)%23) << ":" << gmtm->tm_min << "\n";
         std::cout << "In the " << secondTimeZone.zoneName << " time zone, it's " << utcOffset << ":" << gmtm->tm_min << "\n";
     }
 
