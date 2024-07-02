@@ -111,13 +111,21 @@ int main(){
     //printing is gonna happen here too
     std::cout << "Right now, it is";
     if(use12Hour){
+
+        if(timeToBeCalculated.tm_hour >= 13){
+            std::cout << (timeToBeCalculated.tm_hour%12) << ":" << timeToBeCalculated.tm_min << " pm in your time zone.\n";
+        }
+        else{
+            std::cout << timeToBeCalculated.tm_hour << ":" << timeToBeCalculated.tm_min << " am in your time zone.\n";
+        }
+
         std::cout << "In the " << secondTimeZone.zoneName << " time zone, it's ";
         if (newHours >= 13){
             newHours = newHours % 12;
             utcOffset = utcOffset % 12;
             //print pm hours
 
-            std::cout << timeToBeCalculated.tm_hour << ":" << timeToBeCalculated.tm_min << " in your time zone.\n";
+
             std::cout << utcOffset << ":" << gmtm->tm_min << " pm \n";
 
         }
